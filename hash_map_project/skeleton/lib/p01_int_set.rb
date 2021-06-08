@@ -8,6 +8,7 @@ class MaxIntSet
 
   def insert(num)
     raise 'Out of bounds' if num > max || num < 0
+
     store[num] = true
   end
 
@@ -58,7 +59,6 @@ class IntSet
   end
 end
 
-
 class ResizingIntSet
   attr_reader :count, :prev_num_buckets
 
@@ -70,18 +70,16 @@ class ResizingIntSet
 
   def insert(num)
     unless include?(num)
-      self[num].push(num) 
+      self[num].push(num)
       @count += 1
     end
 
-    if count > num_buckets
-      resize!
-    end
+    resize! if count > num_buckets
   end
 
   def remove(num)
     if include?(num)
-      self[num].delete(num) 
+      self[num].delete(num)
       @count -= 1
     end
   end
@@ -111,6 +109,5 @@ class ResizingIntSet
         insert(ele)
       end
     end
-
   end
 end

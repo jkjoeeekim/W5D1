@@ -4,11 +4,14 @@ end
 
 class Array
   def hash
+    # self.object_id.hash
+    self.join('0').to_i.hash
   end
 end
 
 class String
   def hash
+    self.chars
   end
 end
 
